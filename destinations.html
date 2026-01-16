@@ -23,7 +23,7 @@
         </span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="destinations.html">Destinations</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -33,14 +33,113 @@
   </header>
   <main class="hero-section">
     <div class="page-content">
-      <h1 style="color:#fc575e;">Top Destinations</h1>
-      <ul style="color:#43cea2;">
-        <li>Serengeti National Park</li>
-        <li>Ngorongoro Crater</li>
-        <li>Zanzibar Beaches</li>
-        <li>Tarangire National Park</li>
-      </ul>
+      <div id="attraction-animation" style="text-align:center;">
+        <h1 id="attraction-title" class="animated-title"></h1>
+        <div id="attraction-images" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;"></div>
+      </div>
+            <style>
+              .animated-title {
+                color: #fc575e;
+                font-size: 2.7em;
+                margin-bottom: 0.5em;
+                position: relative;
+                left: -100vw;
+                animation: slideRight 1.6s cubic-bezier(.77,0,.18,1) forwards;
+              }
+              @keyframes slideRight {
+                to { left: 0; }
+              }
+              .attraction-img {
+                width: 100vw;
+                max-width: 1200px;
+                height: 68vh;
+                min-height: 320px;
+                object-fit: cover;
+                border-radius: 32px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+                margin-bottom: 2vh;
+              }
+            </style>
       <p style="color:#a259c6;">Explore Tanzania's breathtaking landscapes and wildlife.</p>
+      <script>
+      const attractions = [
+        {
+          name: 'Serengeti National Park',
+          images: [
+            'https://www.serengeti.com/images/serengeti-national-park.jpg',
+            'https://www.tanzaniatourism.go.tz/uploads/attractions/serengeti.jpg',
+            'https://www.nationalgeographic.com/content/dam/travel/2018-digital/serengeti-national-park/serengeti-national-park-tanzania.ngsversion.1521138572852.adapt.1900.1.jpg'
+          ]
+        },
+        {
+          name: 'Ngorongoro Crater',
+          images: [
+            'https://www.tanzaniatourism.go.tz/uploads/attractions/ngorongoro.jpg',
+            'https://www.ngorongorocrater.com/wp-content/uploads/2019/07/ngorongoro-crater-tanzania.jpg',
+            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/ngorongoro-crater.jpg'
+          ]
+        },
+        {
+          name: 'Tarangire National Park',
+          images: [
+            'https://www.tanzaniatourism.go.tz/uploads/attractions/tarangire.jpg',
+            'https://www.tanzaniaparks.go.tz/uploads/images/tarangire.jpg',
+            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/tarangire-national-park.jpg'
+          ]
+        },
+        {
+          name: 'Ruaha National Park',
+          images: [
+            'https://www.tanzaniatourism.go.tz/uploads/attractions/ruaha.jpg',
+            'https://www.tanzaniaparks.go.tz/uploads/images/ruaha.jpg',
+            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/ruaha-national-park.jpg'
+          ]
+        },
+        {
+          name: 'Lake Manyara National Park',
+          images: [
+            'https://www.tanzaniatourism.go.tz/uploads/attractions/lake-manyara.jpg',
+            'https://www.tanzaniaparks.go.tz/uploads/images/lake-manyara.jpg',
+            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/lake-manyara-national-park.jpg'
+          ]
+        }
+      ];
+      let currentAttraction = 0;
+      let currentImage = 0;
+      const titleEl = document.getElementById('attraction-title');
+      const imagesEl = document.getElementById('attraction-images');
+      function showAttraction(idx) {
+        const attraction = attractions[idx];
+        titleEl.textContent = '';
+        titleEl.classList.remove('animated-title');
+        void titleEl.offsetWidth; // force reflow for animation
+        titleEl.textContent = attraction.name;
+        titleEl.classList.add('animated-title');
+        imagesEl.innerHTML = '';
+        currentImage = 0;
+        showImagesSequentially(attraction.images);
+      }
+      function showImagesSequentially(images) {
+        if (currentImage < images.length) {
+          const img = document.createElement('img');
+          img.src = images[currentImage];
+          img.alt = 'Attraction Image';
+          img.className = 'attraction-img';
+          img.style.opacity = '0';
+          img.style.transition = 'opacity 0.7s';
+          imagesEl.appendChild(img);
+          setTimeout(() => { img.style.opacity = '1'; }, 100);
+          currentImage++;
+          setTimeout(() => showImagesSequentially(images), 900);
+        } else {
+          setTimeout(() => {
+            currentAttraction = (currentAttraction + 1) % attractions.length;
+            showAttraction(currentAttraction);
+          }, 2200);
+        }
+      }
+      showAttraction(currentAttraction);
+      </script>
     </div>
   </main>
 </body>
