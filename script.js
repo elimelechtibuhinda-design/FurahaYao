@@ -27,7 +27,7 @@ function typeEnglishLine() {
   headlineEnEl.textContent = headlineEn.slice(0, idxEn);
   if (idxEn < headlineEn.length) {
     idxEn++;
-    setTimeout(typeEnglishLine, 55);
+    setTimeout(typeEnglishLine, 95);
   } else {
     setTimeout(() => {
       headlineEnEl.textContent = '';
@@ -49,7 +49,7 @@ function typeSwahiliLine() {
   headlineSwEl.textContent = headlineSw.slice(0, idxSw);
   if (idxSw < headlineSw.length) {
     idxSw++;
-    setTimeout(typeSwahiliLine, 55);
+    setTimeout(typeSwahiliLine, 95);
   } else {
     setTimeout(() => {
       headlineSwEl.textContent = '';
@@ -69,6 +69,20 @@ const words = [
     fr: 'Salut',
     de: 'Hallo',
     es: 'Hola'
+  },
+  {
+    sw: 'Pundamilia',
+    en: 'Zebra',
+    fr: 'Zèbre',
+    de: 'Zebra',
+    es: 'Cebra'
+  },
+  {
+    sw: 'Kiboko',
+    en: 'Hippo',
+    fr: 'Hippopotame',
+    de: 'Nilpferd',
+    es: 'Hipopótamo'
   },
   {
     sw: 'Simba',
@@ -111,13 +125,6 @@ const words = [
     fr: 'Éléphant',
     de: 'Elefant',
     es: 'Elefante'
-  },
-  {
-    sw: 'Kilimanjaro',
-    en: 'Kilimanjaro',
-    fr: 'Kilimandjaro',
-    de: 'Kilimandscharo',
-    es: 'Kilimanjaro'
   },
   {
     sw: 'Serengeti',

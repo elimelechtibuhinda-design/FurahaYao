@@ -37,7 +37,7 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 44px;
+  top: 18px;
   right: 0;
   min-width: 160px;
   background: #444c56;
@@ -49,13 +49,20 @@
   z-index: 20;
 }
 .dropdown-menu li {
-  padding: 8px 24px;
+  padding: 4px 14px;
+  background: #555b65;
+  border-radius: 5px;
+  margin: 2px 4px;
+  transition: background 0.2s;
 }
 .dropdown-menu li a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.08rem;
+  font-size: 0.95rem;
   display: block;
+  background: transparent;
+  border-radius: 4px;
+  padding: 1px 0;
   transition: background 0.2s;
 }
 .dropdown-menu li a:hover {
