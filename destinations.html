@@ -32,7 +32,7 @@
     <img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1768547922/FURAHAYAO_SAFARI_FS-07_033644_yu3drx.jpg" alt="FurahaYao Logo Right" class="logo-right">
   </header>
   <main class="hero-section">
-    <div class="page-content">
+    <div class="page-content" style="padding-top: 5px;">
       <div id="attraction-animation" style="text-align:center;">
         <h1 id="attraction-title" class="animated-title"></h1>
         <div id="attraction-images" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;"></div>
@@ -60,48 +60,73 @@
                 margin-bottom: 2vh;
               }
             </style>
-      <p style="color:#a259c6;">Explore Tanzania's breathtaking landscapes and wildlife.</p>
       <script>
       const attractions = [
         {
           name: 'Serengeti National Park',
           images: [
-            'https://www.serengeti.com/images/serengeti-national-park.jpg',
-            'https://www.tanzaniatourism.go.tz/uploads/attractions/serengeti.jpg',
-            'https://www.nationalgeographic.com/content/dam/travel/2018-digital/serengeti-national-park/serengeti-national-park-tanzania.ngsversion.1521138572852.adapt.1900.1.jpg'
-          ]
+            'images/Serengeti.jpg'
+          ],
+          description: `
+            <strong>Location:</strong> Northern Tanzania, bordering Kenya’s Maasai Mara.<br>
+            <strong>Unique animals:</strong> Lions, cheetahs, leopards, elephants, giraffes, wildebeest, zebras, and the elusive serval cat.<br>
+            <strong>About:</strong> The Serengeti is world-renowned for its vast savannahs and the spectacular annual migration of over 1.5 million wildebeest and hundreds of thousands of zebras. It is a UNESCO World Heritage Site and offers one of the most impressive wildlife spectacles on earth.
+          `
         },
         {
           name: 'Ngorongoro Crater',
           images: [
-            'https://www.tanzaniatourism.go.tz/uploads/attractions/ngorongoro.jpg',
-            'https://www.ngorongorocrater.com/wp-content/uploads/2019/07/ngorongoro-crater-tanzania.jpg',
-            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/ngorongoro-crater.jpg'
-          ]
+            'images/Ngorongoro.jpg'
+          ],
+          description: `
+            <strong>Location:</strong> Northern Tanzania.<br>
+            <strong>Unique features:</strong> The world’s largest inactive, intact and unfilled volcanic caldera.<br>
+            <strong>About:</strong> Ngorongoro Crater is a breathtaking natural wonder, home to a dense population of wildlife including the Big Five. Its lush landscape and dramatic views make it a must-see destination for nature lovers.
+          `
         },
         {
           name: 'Tarangire National Park',
           images: [
-            'https://www.tanzaniatourism.go.tz/uploads/attractions/tarangire.jpg',
-            'https://www.tanzaniaparks.go.tz/uploads/images/tarangire.jpg',
-            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/tarangire-national-park.jpg'
-          ]
+            'images/Tarangire.webp'
+          ],
+          description: `
+            <strong>Location:</strong> Northern Tanzania, south of Lake Manyara.<br>
+            <strong>Unique features:</strong> Famous for its large herds of elephants and iconic baobab trees.<br>
+            <strong>About:</strong> Tarangire National Park offers a classic safari experience with diverse wildlife, beautiful river valleys, and a peaceful atmosphere away from the crowds.
+          `
         },
         {
           name: 'Ruaha National Park',
           images: [
-            'https://www.tanzaniatourism.go.tz/uploads/attractions/ruaha.jpg',
-            'https://www.tanzaniaparks.go.tz/uploads/images/ruaha.jpg',
-            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/ruaha-national-park.jpg'
-          ]
+            'images/Ruaha.webp'
+          ],
+          description: `
+            <strong>Location:</strong> Central Tanzania.<br>
+            <strong>Unique features:</strong> Tanzania’s largest national park, known for its rugged scenery and high concentration of predators.<br>
+            <strong>About:</strong> Ruaha is a remote wilderness with dramatic landscapes, ancient baobabs, and abundant wildlife, making it a paradise for adventurous travelers and photographers.
+          `
         },
         {
           name: 'Lake Manyara National Park',
           images: [
-            'https://www.tanzaniatourism.go.tz/uploads/attractions/lake-manyara.jpg',
-            'https://www.tanzaniaparks.go.tz/uploads/images/lake-manyara.jpg',
-            'https://www.tanzaniaodyssey.com/blog/wp-content/uploads/2017/09/lake-manyara-national-park.jpg'
-          ]
+            'images/Manyara.jpg'
+          ],
+          description: `
+            <strong>Location:</strong> Northern Tanzania, at the base of the Rift Valley escarpment.<br>
+            <strong>Unique features:</strong> Famous for its tree-climbing lions and large flocks of flamingos.<br>
+            <strong>About:</strong> Lake Manyara National Park is a lush paradise with diverse habitats, from groundwater forests to alkaline lakes, offering excellent birdwatching and scenic beauty.
+          `
+        },
+        {
+          name: 'Zanzibar',
+          images: [
+            'images/Zanzibar.jpg'
+          ],
+          description: `
+            <strong>Location:</strong> Off the coast of Tanzania in the Indian Ocean.<br>
+            <strong>Unique features:</strong> Pristine white-sand beaches, turquoise waters, historic Stone Town, spice farms.<br>
+            <strong>About:</strong> Zanzibar is a tropical paradise famous for its stunning beaches, rich culture, and vibrant history. Visitors can explore ancient architecture, enjoy water sports, and experience the unique blend of African, Arab, and European influences.
+          `
         }
       ];
       let currentAttraction = 0;
@@ -117,25 +142,83 @@
         titleEl.classList.add('animated-title');
         imagesEl.innerHTML = '';
         currentImage = 0;
-        showImagesSequentially(attraction.images);
+        showImagesSequentially(attraction.images, attraction.description);
       }
-      function showImagesSequentially(images) {
+      function showImagesSequentially(images, description) {
         if (currentImage < images.length) {
+          // Instead of stacking, use a flexbox row for image and description
+          imagesEl.innerHTML = '';
+          const flexRow = document.createElement('div');
+          flexRow.style.display = 'flex';
+          flexRow.style.justifyContent = 'center';
+          flexRow.style.alignItems = 'stretch';
+          flexRow.style.gap = '2.5vw';
+          flexRow.style.margin = '0 0 2em 0';
+          flexRow.style.maxWidth = '100vw';
+          flexRow.style.minHeight = '340px';
+          flexRow.style.width = '100%';
+          // Image box (left)
+          const imgBox = document.createElement('div');
+          imgBox.style.flex = '1 1 0';
+          imgBox.style.display = 'flex';
+          imgBox.style.alignItems = 'center';
+          imgBox.style.justifyContent = 'center';
+          imgBox.style.background = '#f7f7f7';
+          imgBox.style.marginLeft = '40px';
+          imgBox.style.overflow = 'hidden';
+          imgBox.style.minWidth = '900px';
+          imgBox.style.maxWidth = '100%';
+          imgBox.style.height = '520px';
           const img = document.createElement('img');
           img.src = images[currentImage];
           img.alt = 'Attraction Image';
           img.className = 'attraction-img';
+          // Description box (right)
+          const descBox = document.createElement('div');
+          descBox.className = 'attraction-description';
+          descBox.style.flex = '1 1 0';
+          descBox.style.display = 'flex';
+          descBox.style.alignItems = 'center';
+          descBox.style.background = '#fffbe9';
+          descBox.style.borderRadius = '28px';
+          descBox.style.padding = '2.8rem 3.2rem 3.8rem 3.2rem'; // top, right, bottom, left
+          descBox.style.margin = '0 40px 0 0';
+          descBox.style.fontSize = '1.22em';
+          descBox.style.color = '#222';
+          descBox.style.boxShadow = '0 4px 24px rgba(0,0,0,0.10)';
+          descBox.style.minWidth = '120px';
+          descBox.style.overflowX = 'auto';
+          descBox.style.boxSizing = 'border-box';
+          descBox.style.maxWidth = '420px';
+          descBox.style.flex = '0 1 420px';
+          descBox.style.height = '440px';
+          descBox.style.overflowY = 'auto';
+          descBox.style.display = 'block';
+          descBox.style.textAlign = 'left';
+          descBox.style.verticalAlign = 'top';
+          descBox.style.wordBreak = 'break-word';
+          descBox.style.whiteSpace = 'normal';
+          descBox.style.padding = '1.5rem 1.5rem';
+          descBox.style.lineHeight = '1.6';
+          descBox.style.letterSpacing = '0.01em';
+          descBox.style.fontFamily = 'inherit, Arial, sans-serif';
+          descBox.innerHTML = description || '';
           img.style.opacity = '0';
           img.style.transition = 'opacity 0.7s';
-          imagesEl.appendChild(img);
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'cover';
+          imgBox.appendChild(img);
+          flexRow.appendChild(imgBox);
+          flexRow.appendChild(descBox);
+          imagesEl.appendChild(flexRow);
           setTimeout(() => { img.style.opacity = '1'; }, 100);
           currentImage++;
-          setTimeout(() => showImagesSequentially(images), 900);
-        } else {
+          // Only one image per attraction in this layout
           setTimeout(() => {
             currentAttraction = (currentAttraction + 1) % attractions.length;
             showAttraction(currentAttraction);
-          }, 2200);
+          }, 3400);
         }
       }
       showAttraction(currentAttraction);

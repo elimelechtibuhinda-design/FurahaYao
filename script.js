@@ -1,9 +1,16 @@
+window.onload = function() {
+  document.body.classList.remove('page-loading');
+};
 // Dropdown menu toggle
-document.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
   const dropdownContainer = document.querySelector('.dropdown-container');
   const dropdownToggle = document.querySelector('.dropdown-toggle');
   // Remove click-to-toggle logic for hover-based dropdown
-});
+
+  // Start animated headline only after everything (including media) is loaded
+  showEnglishLine();
+  // If you want to start other animations after load, do it here
+};
 // Navbar logic removed: site is now pre-navbar
 // Navbar logic removed: site is now pre-navbar
 // Animated two-line headline typewriter effect, each line appears separately
@@ -58,7 +65,7 @@ function typeSwahiliLine() {
   }
 }
 
-showEnglishLine();
+// showEnglishLine(); // Now called after window.onload
 
 
 // Tanzanian words and translations for animation
@@ -77,13 +84,7 @@ const words = [
     de: 'Zebra',
     es: 'Cebra'
   },
-  {
-    sw: 'Kiboko',
-    en: 'Hippo',
-    fr: 'Hippopotame',
-    de: 'Nilpferd',
-    es: 'Hipopótamo'
-  },
+ 
   {
     sw: 'Simba',
     en: 'Lion',

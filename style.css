@@ -1,3 +1,13 @@
+/* --- Scroll Snap Layout --- */
+html, body {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+body.page-loading {
+  opacity: 0 !important;
+  pointer-events: none;
+}
 .dropdown-container:hover .dropdown-menu,
 .dropdown-container:focus-within .dropdown-menu {
   display: block;
@@ -75,8 +85,9 @@
 /* Dropdown JS */
 /* Header alignment and landing page boundary */
 .site-header {
+    margin-left: 9px;
   position: relative;
-  width: 100%;
+  width: calc(100% - 20px);
   height: 105px;
   display: flex;
   align-items: center;
@@ -125,16 +136,18 @@
 }
 /* Carousel and hero-section fixed for proper CSS structure */
 .carousel {
+    margin-top: 5%;
+    margin-left: 5px;
   position: relative;
   width: calc(90vw + 190px);
-  height: calc(80vh + 20px);
+  height: calc(80vh + 100px);
   min-height: 340px;
-  max-width: 1390px;
-  max-height: calc(80vh + 20px);
+  max-width: 1420px;
+  max-height: calc(80vh + 30px);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2vh auto 0 auto;
+  margin: 8px auto 0 10px;
   overflow: hidden;
   border-radius: 18px;
 }
@@ -381,6 +394,7 @@ body {
 /* Lower boundaries and make carousel fit the page */
 /* Hero section boundary starts after header and fills to bottom */
 .hero-section {
+    margin-left: 15px;
   position: relative;
   margin: 0 auto;
   width: 100vw;
