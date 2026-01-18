@@ -32,15 +32,21 @@
     <img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1768547922/FURAHAYAO_SAFARI_FS-07_033644_yu3drx.jpg" alt="FurahaYao Logo Right" class="logo-right">
   </header>
   <main class="hero-section">
-    <div class="page-content">
-      <h1 style="color:#6a11cb;">Contact Us</h1>
-      <p style="color:#fc575e;">Ready to start your adventure? Reach out to us!</p>
-      <form style="margin-top:1em;">
-        <input type="text" placeholder="Your Name" style="margin-bottom:8px;display:block;width:100%;max-width:320px;">
-        <input type="email" placeholder="Your Email" style="margin-bottom:8px;display:block;width:100%;max-width:320px;">
-        <textarea placeholder="Your Message" style="margin-bottom:8px;display:block;width:100%;max-width:320px;"></textarea>
-        <button type="submit" style="background:#43cea2;color:#fff;padding:8px 18px;border:none;border-radius:6px;">Send</button>
+    <div class="contact-card">
+      <h1 class="contact-title">Contact Us</h1>
+      <p class="contact-subtitle">Ready to start your adventure? Reach out to us and we’ll help you plan your dream safari!</p>
+      <div class="contact-info">
+        <div class="contact-info-item"><span class="contact-icon">📧</span> info@furahayaosafaris.com</div>
+        <div class="contact-info-item"><span class="contact-icon">📞</span> +255755392290</div>
+        <div class="contact-info-item"><span class="contact-icon">📍</span> Arusha, Tanzania</div>
+      </div>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
       </form>
+      <div class="contact-thankyou" style="display:none;">Thank you for reaching out! We’ll get back to you soon.</div>
     </div>
   </main>
 </body>

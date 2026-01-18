@@ -32,11 +32,52 @@
     <img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1768547922/FURAHAYAO_SAFARI_FS-07_033644_yu3drx.jpg" alt="FurahaYao Logo Right" class="logo-right">
   </header>
   <main class="hero-section">
-    <div class="page-content">
-      <h1 style="color:#a259c6;">About FurahaYao Safaris</h1>
-      <p style="color:#fc575e;">We are passionate about sharing the wonders of Tanzania with the world.</p>
-      <p style="color:#43cea2;">Our experienced guides and custom tours ensure an unforgettable adventure for every traveler.</p>
+    <div class="about-animated-boxes">
+      <div class="about-box" id="about-box-1">
+        <h1 style="color:#a259c6;">About FurahaYao Safaris</h1>
+        <p style="color:#fc575e; font-size:1.2em;">We are passionate about sharing the wonders of Tanzania with the world. At FurahaYao Safaris, we believe that every journey should be as unique as the traveler. Our team is dedicated to making your dream adventure a reality, whether you are seeking the thrill of a wildlife safari, the serenity of a beach escape, or the cultural richness of Tanzania’s vibrant communities. From the moment you contact us, we take care of every detail—planning, logistics, and support—so you can focus on enjoying your adventure and making lifelong memories. We pride ourselves on our local expertise, warm hospitality, and commitment to delivering truly unforgettable experiences for every guest.</p>
+      </div>
+      <div class="about-box" id="about-box-2">
+        <h2 style="color:#fc575e; margin-top:56px;">Our Services</h2>
+        <ul style="color:#333; font-size:1.08em; line-height:1.7; max-width:900px; margin:0 auto 2em auto; text-align:left;">
+          <li><b>Custom safari planning and organization</b> – Personalized itineraries for every traveler.</li>
+          <li><b>Experienced local guides</b> – Knowledgeable, friendly, and passionate about Tanzania.</li>
+          <li><b>Transport & accommodation</b> – We arrange everything for a smooth journey.</li>
+          <li><b>Wildlife & nature tours</b> – Explore the Serengeti, Ngorongoro, Zanzibar, and more.</li>
+          <li><b>Cultural & historical excursions</b> – Discover Tanzania’s rich heritage and traditions.</li>
+          <li><b>Beach holidays & island getaways</b> – Relax on Zanzibar’s white sands or enjoy water sports.</li>
+          <li><b>Airport transfers & city tours</b> – Seamless arrivals, departures, and guided city visits.</li>
+          <li><b>Family, group, and solo packages</b> – Options for every type of traveler.</li>
+          <li><b>24/7 support</b> – We’re always here for you during your trip.</li>
+        </ul>
+      </div>
+      <div class="about-box" id="about-box-3">
+        <h2 style="color:#43cea2;">Why Choose Us?</h2>
+        <ul style="color:#333; font-size:1.08em; line-height:1.7; max-width:900px; margin:0 auto 2em auto; text-align:left;">
+          <li><b>Personalized Itineraries:</b> Every trip is unique. We listen to your wishes and craft journeys that reflect your dreams, whether it’s a classic safari, a romantic honeymoon, or a family adventure.</li>
+          <li><b>Trusted Local Expertise:</b> Our team lives and works in Tanzania. We know the land, the people, and the wildlife, giving you authentic experiences and insider access.</li>
+          <li><b>Commitment to Safety, Comfort, and Sustainability:</b> Your well-being is our top priority. We partner with responsible operators and support eco-friendly tourism that benefits local communities and preserves nature.</li>
+          <li><b>Transparent Pricing and No Hidden Fees:</b> We believe in honesty and clarity. You get a detailed quote with no surprises, and we’re always here to answer your questions.</li>
+        </ul>
+        <p style="color:#a259c6; font-size:1.1em; margin-top:2em;">If you want to visit any touristic place in Tanzania, get in touch with us using the contact information provided on our <a href="contact.html" style="color:#fc575e; text-decoration:underline;">Contact</a> page. We look forward to making your dream adventure a reality! Whether you’re a first-time visitor or a seasoned explorer, FurahaYao Safaris is your trusted partner for discovering the best of Tanzania.</p>
+      </div>
     </div>
+    <script>
+      // Simple animation: show one box at a time, fade in/out
+      const boxes = document.querySelectorAll('.about-box');
+      let current = 0;
+      function showBox(idx) {
+        boxes.forEach((box, i) => {
+          box.style.opacity = (i === idx) ? '1' : '0';
+          box.style.pointerEvents = (i === idx) ? 'auto' : 'none';
+        });
+      }
+      showBox(current);
+      setInterval(() => {
+        current = (current + 1) % boxes.length;
+        showBox(current);
+      }, 8000);
+    </script>
   </main>
 </body>
 </html>
